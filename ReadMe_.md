@@ -244,6 +244,16 @@ python data_analytics_project_corrected.py
 ```
 
 ### Expected Output:
+
+## Output Files Generated
+
+1. **cleaned_data.csv** - Final preprocessed dataset ready for predictive modeling
+2. **statistical_summary.csv** - Comparison of pre/post preprocessing statistics
+3. **waterfront_analysis.png** - Waterfront property comparative analysis
+4. **floorspace_analysis.png** - Floor space impact visualizations
+5. **builtyear_price_correlation.png** - Build year and price relationship
+6. **data_quality_improvements.png** - Pre/post preprocessing improvements
+
 ```
 ================================================================================
 MANCHESTER HOUSING DATA ANALYTICS - COMPREHENSIVE PIPELINE
