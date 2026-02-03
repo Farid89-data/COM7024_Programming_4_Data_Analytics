@@ -339,11 +339,8 @@ The repository can be used directly to support a structured 1000‑word report g
 <div align="center">
 
 © 2026 Farid Negahbnai | Arden University
-
-Made with ❤️ for COM7023 Mathematics for Data Science
-
 *Python 3.8+ | pandas | NumPy | SciPy | matplotlib | seaborn | scikit‑learn*  
 *Arden University — COM7024*
-
+Made with ❤️ for COM7024 Programming for Data Analytics
 </div>
 
