@@ -342,8 +342,6 @@ The repository can be used directly to support a structured 1000‑word report g
 
 *Python 3.8+ | pandas | NumPy | SciPy | matplotlib | seaborn | scikit‑learn*  
 
-*Arden University — COM7024*
-
 Made with ❤️ for COM7024 Programming for Data Analytics
 </div>
 
