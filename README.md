@@ -1,14 +1,7 @@
 # Manchester Housing Data Analytics Project
 <div align="center">
 
-python 3.8+
-pandas
-NumPy
-SciPy
-matplotlib
-seaborn
-scikit‑learn
-License
+Python 3.8+ | pandas | NumPy | SciPy | matplotlib | seaborn | scikit‑learn | License
 
 A comprehensive mathematical analysis portfolio for data science applications
 
