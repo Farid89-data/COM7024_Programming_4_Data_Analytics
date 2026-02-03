@@ -264,10 +264,15 @@ pip install -r requirements.txt
 ```
 
 pandas>=2.0
+
 numpy>=1.24
+
 matplotlib>=3.7
+
 seaborn>=0.12
+
 scipy>=1.10
+
 scikit-learn>=1.3
 
 
