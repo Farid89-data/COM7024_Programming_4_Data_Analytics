@@ -258,10 +258,19 @@ All methods are selected to match data characteristics and research questions.
 ## 💻 Running the Project
 
 ### Requirements
-
-```bash
-pip install pandas numpy matplotlib seaborn scipy scikit-learn
+Use this only if your university discourages strict pinning.
 ```
+pip install -r requirements.txt
+```
+
+pandas>=2.0
+numpy>=1.24
+matplotlib>=3.7
+seaborn>=0.12
+scipy>=1.10
+scikit-learn>=1.3
+
+
 
 ### Execution
 
