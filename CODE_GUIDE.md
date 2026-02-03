@@ -68,9 +68,9 @@ print(df.info())
 
 ---
 
-## PHASE 2: PRE-PROCESSING QUALITY ASSESSMENT
+## 🔨PHASE 2: PRE-PROCESSING QUALITY ASSESSMENT
 
-### 🧹 Step 2.1: Identify Missing Values
+### Step 2.1: Identify Missing Values
 ```python
 # Count missing values by column
 missing_data = pd.DataFrame({
@@ -87,7 +87,7 @@ print(missing_data)
 - LOW missing percentage (<5%): Can impute safely
 - NO missing values: Column is complete
 
-### 👀 Step 2.2: Check for Duplicates
+### Step 2.2: Check for Duplicates
 ```python
 # Count duplicate rows
 duplicates = df.duplicated().sum()
@@ -103,7 +103,7 @@ duplicate_rows = df[df.duplicated(keep=False)]
 - Skewed statistical analysis
 - Double-counting in aggregations
 
-### 📈 Step 2.3: Generate Baseline Statistics
+### Step 2.3: Generate Baseline Statistics
 ```python
 # Comprehensive statistical summary
 stats_pre = df.describe().T  # Transpose for better readability
@@ -123,7 +123,7 @@ print(stats_pre)
 
 ---
 
-## 🧼 PHASE 3: DATA PREPROCESSING & CLEANING
+## 🧹 PHASE 3: DATA PREPROCESSING & CLEANING
 
 ### Step 3.1: Handle Missing Values
 ```python
@@ -200,7 +200,7 @@ df_cleaned['renovated'] = df_cleaned['renovated'].astype('category')
 
 ---
 
-## PHASE 4: POST-PROCESSING STATISTICAL ANALYSIS
+## 📈 PHASE 4: POST-PROCESSING STATISTICAL ANALYSIS
 
 ### Step 4.1: Compare Pre vs Post Statistics
 ```python
@@ -226,7 +226,7 @@ print(improvements)
 
 ## PHASE 5: WATERFRONT PROPERTIES INVESTIGATION
 
-### Step 5.1: Frequency Analysis
+### 🔍 Step 5.1: Frequency Analysis
 ```python
 # Count properties by waterfront status
 waterfront_counts = df_cleaned['waterfront'].value_counts()
@@ -236,7 +236,7 @@ print(f"Non-waterfront: {waterfront_counts[0]} ({waterfront_pct[0]:.1f}%)")
 print(f"Waterfront: {waterfront_counts[1]} ({waterfront_pct[1]:.1f}%)")
 ```
 
-### Step 5.2: Price Comparison
+### ⚖️ Step 5.2: Price Comparison
 ```python
 # Separate by waterfront status
 non_waterfront_prices = df_cleaned[df_cleaned['waterfront'] == 0]['price']
@@ -273,7 +273,7 @@ else:
 - p < 0.001: HIGHLY SIGNIFICANT (rare to occur randomly)
 - p > 0.05: Not significant (could easily occur by chance)
 
-### Step 5.4: Create Visualization
+### 📊📈 Step 5.4: Create Visualization
 ```python
 import matplotlib.pyplot as plt
 
@@ -297,7 +297,7 @@ plt.savefig('waterfront_analysis.png', dpi=300)
 
 ---
 
-## PHASE 6: FLOOR SPACE ANALYSIS
+## 🔮 PHASE 6: FLOOR SPACE ANALYSIS
 
 ### Step 6.1: Correlation Analysis
 ```python
@@ -366,7 +366,7 @@ plt.savefig('floorspace_analysis.png', dpi=300)
 
 ---
 
-## PHASE 7: BUILD YEAR VS PRICE CORRELATION
+## 🎯 PHASE 7: BUILD YEAR VS PRICE CORRELATION
 
 ### Step 7.1: Temporal Analysis
 ```python
@@ -446,7 +446,7 @@ plt.savefig('builtyear_analysis.png', dpi=300)
 
 ---
 
-## PHASE 8: SAVE OUTPUTS
+## 💾 PHASE 8: SAVE OUTPUTS
 
 ### Step 8.1: Save Cleaned Data
 ```python
