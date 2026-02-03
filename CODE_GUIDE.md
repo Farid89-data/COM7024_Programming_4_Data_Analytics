@@ -1,9 +1,9 @@
-# STEP-BY-STEP PYTHON CODE GUIDE FOR MANCHESTER HOUSING ANALYSIS
+# ❗👨‍🏫 CODE GUIDE FOR MANCHESTER HOUSING ANALYSIS
 
 ## Overview
 This guide breaks down the complete Python data analytics project into logical phases with explanations of each step.
 
-## Project Structure
+## </> Project Structure
 
 ```
 Phase 1: Data Import & Exploration
@@ -27,7 +27,7 @@ Phase 9: Output & Report Generation
 
 ---
 
-## PHASE 1: DATA IMPORT & EXPLORATION
+## 📥 PHASE 1: DATA IMPORT & EXPLORATION
 
 ### Step 1.1: Load Dataset
 ```python
@@ -70,7 +70,7 @@ print(df.info())
 
 ## PHASE 2: PRE-PROCESSING QUALITY ASSESSMENT
 
-### Step 2.1: Identify Missing Values
+### 🧹 Step 2.1: Identify Missing Values
 ```python
 # Count missing values by column
 missing_data = pd.DataFrame({
@@ -87,7 +87,7 @@ print(missing_data)
 - LOW missing percentage (<5%): Can impute safely
 - NO missing values: Column is complete
 
-### Step 2.2: Check for Duplicates
+### 👀 Step 2.2: Check for Duplicates
 ```python
 # Count duplicate rows
 duplicates = df.duplicated().sum()
@@ -103,7 +103,7 @@ duplicate_rows = df[df.duplicated(keep=False)]
 - Skewed statistical analysis
 - Double-counting in aggregations
 
-### Step 2.3: Generate Baseline Statistics
+### 📈 Step 2.3: Generate Baseline Statistics
 ```python
 # Comprehensive statistical summary
 stats_pre = df.describe().T  # Transpose for better readability
@@ -123,7 +123,7 @@ print(stats_pre)
 
 ---
 
-## PHASE 3: DATA PREPROCESSING & CLEANING
+## 🧼 PHASE 3: DATA PREPROCESSING & CLEANING
 
 ### Step 3.1: Handle Missing Values
 ```python
@@ -558,5 +558,3 @@ with open('outputs/analysis_report.txt', 'w') as f:
 **Solution:** Use appropriate data types, filter unnecessary columns
 
 ---
-
-This guide provides the complete analytical framework for the Manchester Housing project. Each step builds on the previous, creating a comprehensive analysis pipeline suitable for executive reporting to the estate manager.
