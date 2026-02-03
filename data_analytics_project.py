@@ -175,18 +175,35 @@ print("PHASE 4: POST-PROCESSING STATISTICAL ANALYSIS")
 print("="*80)
 
 print("\n[STEP 4.1] Post-Processing Descriptive Statistics...")
-post_stats = df_cleaned.describe().T.round(4)
-post_stats['Skewness'] = df_cleaned.skew().round(4)
-post_stats['Kurtosis'] = df_cleaned.kurtosis().round(4)
-print(post_stats)
+numeric_df = df_cleaned.select_dtypes(include='number')
+numeric_cols = numeric_df.columns
 
+post_stats = numeric_df.describe().T.round(4)
+post_stats['Skewness'] = numeric_df.skew().round(4)
+post_stats['Kurtosis'] = numeric_df.kurtosis().round(4)
+
+print(post_stats)
+################
+#post_stats = df_cleaned.describe().T.round(4)
+##post_stats['Skewness'] = df_cleaned.skew().round(4)
+##post_stats['Kurtosis'] = df_cleaned.kurtosis().round(4)
+##print(post_stats)
+###############
 print("\n[STEP 4.2] Statistical Improvements Summary...")
+
+## improvements = pd.DataFrame({
+ ##   'Variable': numeric_cols,
+ ##   'Skewness_Before': pre_stats.loc[numeric_cols, 'Skewness'],
+ ##   'Skewness_After': post_stats.loc[numeric_cols, 'Skewness'],
+ ##   'Std_Before': pre_stats.loc[numeric_cols, 'std'],
+ ##  'Std_After': post_stats.loc[numeric_cols, 'std']
+##})
 improvements = pd.DataFrame({
     'Variable': numeric_cols,
-    'Skewness_Before': pre_stats.loc[numeric_cols, 'Skewness'],
-    'Skewness_After': post_stats.loc[numeric_cols, 'Skewness'],
-    'Std_Before': pre_stats.loc[numeric_cols, 'std'],
-    'Std_After': post_stats.loc[numeric_cols, 'std']
+    'Skewness_Before': pre_stats.loc[numeric_cols, 'Skewness'].values,
+    'Skewness_After': post_stats.loc[numeric_cols, 'Skewness'].values,
+    'Kurtosis_Before': pre_stats.loc[numeric_cols, 'Kurtosis'].values,
+    'Kurtosis_After': post_stats.loc[numeric_cols, 'Kurtosis'].values,
 })
 print(improvements)
 
@@ -305,7 +322,7 @@ print("PHASE 6: INVESTIGATION 2 - FLOOR SPACE ANALYSIS")
 print("="*80)
 
 print("\n[STEP 6.1] Floor Space Variables Descriptive Statistics...")
-floor_space_vars = ['sqft_living', 'living_area', 'totalfloors']
+floor_space_vars = ['sqft_living', 'living_area', 'floors']
 for var in floor_space_vars:
     print(f"\n{var.upper()}:")
     print(f"  - Mean: {df_cleaned[var].mean():.2f}")
@@ -346,13 +363,13 @@ axes[0, 0].set_title(f'Floor Space vs Price (r={r:.3f})')
 axes[0, 0].legend()
 axes[0, 0].grid(alpha=0.3)
 
-# Subplot 2: Scatter plot - livingqft vs price
-axes[0, 1].scatter(df_cleaned['livingsqft'], df_cleaned['price']/1000, alpha=0.5, s=20, color='coral')
-z2 = np.polyfit(df_cleaned['livingsqft'], df_cleaned['price']/1000, 1)
+# Subplot 2: Scatter plot - living_area vs price
+axes[0, 1].scatter(df_cleaned['living_area'], df_cleaned['price']/1000, alpha=0.5, s=20, color='coral')
+z2 = np.polyfit(df_cleaned['living_area'], df_cleaned['price']/1000, 1)
 p2 = np.poly1d(z2)
-axes[0, 1].plot(df_cleaned['livingsqft'].sort_values(), p2(df_cleaned['livingsqft'].sort_values()), 
+axes[0, 1].plot(df_cleaned['living_area'].sort_values(), p2(df_cleaned['living_area'].sort_values()), 
                 "r--", alpha=0.8, linewidth=2, label='Trend')
-r2, _ = correlations['livingsqft']
+r2, _ = correlations['living_area']
 axes[0, 1].set_xlabel('Living Floor Space (sqft)')
 axes[0, 1].set_ylabel('Price (£1000s)')
 axes[0, 1].set_title(f'Living Space vs Price (r={r2:.3f})')
@@ -460,7 +477,7 @@ axes[1, 0].set_title('Property Count by Build Decade')
 axes[1, 0].grid(alpha=0.3, axis='y')
 
 # Subplot 4: Correlation heatmap with other variables
-correlation_vars = ['built', 'price', 'sqft', 'bedrooms', 'bathrooms']
+correlation_vars = ['built', 'price', 'sqft_living', 'bedrooms', 'bathrooms']
 corr_matrix = df_cleaned[correlation_vars].corr().round(3)
 sns.heatmap(corr_matrix, annot=True, fmt='.3f', cmap='RdYlGn', center=0, 
             ax=axes[1, 1], cbar_kws={'label': 'Correlation'}, vmin=-1, vmax=1)
@@ -483,7 +500,7 @@ fig, axes = plt.subplots(2, 2, figsize=(14, 10))
 fig.suptitle('Data Preprocessing Impact: Quality Improvements', fontsize=16, fontweight='bold')
 
 # Compare distributions
-sample_cols = ['price', 'sqft', 'bedrooms']
+sample_cols = ['price', 'sqft_living', 'bedrooms']
 
 for idx, col in enumerate(sample_cols):
     row = idx // 2
@@ -578,9 +595,9 @@ KEY FINDING: Waterfront properties command a significant price premium of {price
 FOCUSED INVESTIGATION 2: FLOOR SPACE ANALYSIS
 {'='*80}
 Correlations with Price:
-  - sqft (Total Floor Space): r = {correlations['sqft_living'][0]:.4f}, p < 0.001 ***
-  - livingsqft (Living Space): r = {correlations['livingsqft'][0]:.4f}, p < 0.001 ***
-  - totalfloors (Floor Count): r = {correlations['totalfloors'][0]:.4f}, p < 0.001 ***
+    - sqft_living (Total Floor Space): r = {correlations['sqft_living'][0]:.4f}, p < 0.001 ***
+    - living_area (Living Space): r = {correlations['living_area'][0]:.4f}, p < 0.001 ***
+    - floors (Floor Count): r = {correlations['floors'][0]:.4f}, p < 0.001 ***
 
 Floor Space Quartile Analysis:
   Q1 (Smallest): Mean Price = £{df_cleaned[df_cleaned['sqft_quartile'] == 'Q1 (Smallest)']['price'].mean():,.2f}
@@ -646,7 +663,7 @@ Analysis Framework: Exploratory Data Analysis with Python (pandas, numpy, scipy,
 Methodology: Following Arden University COM7024 Academic Standards
 """
 
-with open('outputs/analysis_summary_report.txt', 'w') as f:
+with open('outputs/analysis_summary_report.txt', 'w', encoding='utf-8') as f:
     f.write(summary_report)
 
 print("✓ Summary report saved: analysis_summary_report.txt")
