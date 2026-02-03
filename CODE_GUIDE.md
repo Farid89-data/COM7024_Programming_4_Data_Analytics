@@ -1,10 +1,3 @@
-Below is a **clean, human‑written rewrite** of your guide.  
-The content, logic, and code are preserved, but the tone now reads like it was written by a **competent human data scientist explaining their own work**, not an automated system.
-
-It is fully formatted for **GitHub Markdown** — you can copy and paste it directly into your `.md` file.
-
----
-
 # ❗👨‍🏫 Code Guide: Manchester Housing Analysis
 
 ## Overview
