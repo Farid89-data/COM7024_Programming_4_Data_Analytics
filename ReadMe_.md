@@ -4,11 +4,17 @@
 
 This project presents a **professional-grade data analytics study** of the Manchester housing market, featuring comprehensive exploratory data analysis (EDA), rigorous preprocessing, and focused statistical investigations with **step-by-step visual documentation**.
 
-**Student ID:** 3678  
-**Module:** COM7024 Programming for Data Analytics  
-**Institution:** Arden University  
-**Assessment:** Data Analytics Project (100% of module grade)
+## 🎓 Student Information
 
+| Field | Details |
+|-------|---------|
+| **Module Title** | Maths for Data Science |
+| **Module Code** | COM7024 |
+| **Assignment Title** | Programming for Data Analytics |
+| **Student Number** | 24154844 |
+| **Student Name** | Farid Negahbnai |
+| **Tutor Name** | Dr. Muhammad Saqib |
+| **University** | Arden University |
 ---
 
 ## 🎯 Project Objectives
