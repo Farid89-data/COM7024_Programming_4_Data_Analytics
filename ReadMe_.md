@@ -31,7 +31,19 @@ As specified in the assignment brief, this project demonstrates:
 5. **Evidence-Based Insights** - Actionable recommendations for Estate Management Plc
 
 ---
+## 🛢 Dataset Overview
 
+**File:** `Manchester_house_Dataset-3678.csv`
+
+**Size:** 5,000+ housing records with 13 variables
+
+**Key Variables:**
+- **price** (target variable): Sale price in £
+- **waterfront**: Binary indicator (0 = non-waterfront, 1 = waterfront property)
+- **sqft, livingsqft, totalfloors**: Space measurements
+- **built**: Year of construction
+- **bedrooms, bathrooms, condition, grade, view, renovated**: Property characteristics
+- 
 ## 📁 Project Structure
 
 ```
