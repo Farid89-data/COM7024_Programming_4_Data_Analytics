@@ -141,7 +141,7 @@ print("  - Method: Min-Max Scaling for price-related continuous variables")
 print("  - Purpose: Enable fair comparison across different measurement scales")
 
 # Select columns to normalize
-cols_to_normalize = ['price', 'sqft', 'livingsqft']
+cols_to_normalize = ['price', 'sqft_living', 'living_area']
 scaler = MinMaxScaler()
 
 # Create normalized versions (preserve originals for analysis)
@@ -305,7 +305,7 @@ print("PHASE 6: INVESTIGATION 2 - FLOOR SPACE ANALYSIS")
 print("="*80)
 
 print("\n[STEP 6.1] Floor Space Variables Descriptive Statistics...")
-floor_space_vars = ['sqft', 'livingsqft', 'totalfloors']
+floor_space_vars = ['sqft_living', 'living_area', 'totalfloors']
 for var in floor_space_vars:
     print(f"\n{var.upper()}:")
     print(f"  - Mean: {df_cleaned[var].mean():.2f}")
@@ -323,7 +323,7 @@ for var in floor_space_vars:
 
 print("\n[STEP 6.3] Floor Space Impact Analysis...")
 # Create floor space quartiles
-df_cleaned['sqft_quartile'] = pd.qcut(df_cleaned['sqft'], q=4, labels=['Q1 (Smallest)', 'Q2', 'Q3', 'Q4 (Largest)'])
+df_cleaned['sqft_quartile'] = pd.qcut(df_cleaned['sqft_living'], q=4, labels=['Q1 (Smallest)', 'Q2', 'Q3', 'Q4 (Largest)'])
 
 print("\nPrice by Floor Space Quartile:")
 quartile_analysis = df_cleaned.groupby('sqft_quartile')['price'].agg(['count', 'mean', 'median', 'std']).round(2)
@@ -334,12 +334,12 @@ fig, axes = plt.subplots(2, 2, figsize=(14, 10))
 fig.suptitle('Floor Space Impact on Housing Prices', fontsize=16, fontweight='bold')
 
 # Subplot 1: Scatter plot - sqft vs price
-axes[0, 0].scatter(df_cleaned['sqft'], df_cleaned['price']/1000, alpha=0.5, s=20, color='steelblue')
-z = np.polyfit(df_cleaned['sqft'], df_cleaned['price']/1000, 1)
+axes[0, 0].scatter(df_cleaned['sqft_living'], df_cleaned['price']/1000, alpha=0.5, s=20, color='steelblue')
+z = np.polyfit(df_cleaned['sqft_living'], df_cleaned['price']/1000, 1)
 p = np.poly1d(z)
-axes[0, 0].plot(df_cleaned['sqft'].sort_values(), p(df_cleaned['sqft'].sort_values()), 
+axes[0, 0].plot(df_cleaned['sqft_living'].sort_values(), p(df_cleaned['sqft_living'].sort_values()), 
                 "r--", alpha=0.8, linewidth=2, label='Trend')
-r, _ = correlations['sqft']
+r, _ = correlations['sqft_living']
 axes[0, 0].set_xlabel('Floor Space (sqft)')
 axes[0, 0].set_ylabel('Price (£1000s)')
 axes[0, 0].set_title(f'Floor Space vs Price (r={r:.3f})')
@@ -578,7 +578,7 @@ KEY FINDING: Waterfront properties command a significant price premium of {price
 FOCUSED INVESTIGATION 2: FLOOR SPACE ANALYSIS
 {'='*80}
 Correlations with Price:
-  - sqft (Total Floor Space): r = {correlations['sqft'][0]:.4f}, p < 0.001 ***
+  - sqft (Total Floor Space): r = {correlations['sqft_living'][0]:.4f}, p < 0.001 ***
   - livingsqft (Living Space): r = {correlations['livingsqft'][0]:.4f}, p < 0.001 ***
   - totalfloors (Floor Count): r = {correlations['totalfloors'][0]:.4f}, p < 0.001 ***
 
@@ -632,7 +632,7 @@ RECOMMENDATIONS FOR ESTATE MANAGER
    only {waterfront_pct[1]:.1f}% of the market, indicating a specialized niche opportunity.
 
 2. SPACE OPTIMIZATION: Floor space is a critical value driver. Renovation projects targeting additional
-   square footage could yield significant returns based on the strong correlation (r={correlations['sqft'][0]:.3f}).
+   square footage could yield significant returns based on the strong correlation (r={correlations['sqft_living'][0]:.3f}).
 
 3. MARKET SEGMENTATION: Build year influences pricing, suggesting market preferences for newer construction.
    Properties from different decades may appeal to different buyer segments.
