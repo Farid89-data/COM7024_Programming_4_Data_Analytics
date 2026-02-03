@@ -1,0 +1,335 @@
+================================================================================PHASE 1: DATA IMPORT AND INITIAL ANALYSIS
+================================================================================
+[STEP 1.1] Loading Manchester Housing Dataset...
+✓ Dataset loaded successfully
+  - Dimensions: 19999 rows × 15 columns
+  - Memory usage: 2.29 MB
+
+[STEP 1.2] Dataset Structure and Data Types...
+
+Column Names and Types:
+Unnamed: 0       int64
+id               int64
+price            int64
+bedrooms       float64
+bathrooms      float64
+sqft_living      int64
+sqft_total       int64
+floors         float64
+waterfront       int64
+view             int64
+condition        int64
+grade            int64
+built            int64
+renovated        int64
+living_area      int64
+dtype: object
+
+[STEP 1.3] First 5 rows of data:
+   Unnamed: 0          id   price  ...  built  renovated  living_area
+0           0  7129300520  221900  ...   1955          0         1340
+1           1  6414100192  538000  ...   1951       1991         1690
+2           2  5631500400  180000  ...   1933          0         2720
+3           3  2487200875  604000  ...   1965          0         1360
+4           4  1954400510  510000  ...   1987          0         1800
+
+[5 rows x 15 columns]
+
+================================================================================PHASE 2: DATA QUALITY ASSESSMENT (BEFORE PREPROCESSING)
+================================================================================
+[STEP 2.1] Missing Values Analysis...
+                  Column  Missing_Count  Missing_Percentage
+Unnamed: 0    Unnamed: 0              0                0.00
+id                    id              0                0.00
+price              price              0                0.00
+bedrooms        bedrooms             13                0.07
+bathrooms      bathrooms             10                0.05
+sqft_living  sqft_living              0                0.00
+sqft_total    sqft_total              0                0.00
+floors            floors              0                0.00
+waterfront    waterfront              0                0.00
+view                view              0                0.00
+condition      condition              0                0.00
+grade              grade              0                0.00
+built              built              0                0.00
+renovated      renovated              0                0.00
+living_area  living_area              0                0.00
+
+[STEP 2.2] Duplicate Records Check...
+  - Total duplicate rows: 0
+
+[STEP 2.3] Pre-Processing Descriptive Statistics...
+               count          mean  ...  Skewness  Kurtosis
+Unnamed: 0   19999.0  9.999000e+03  ...    0.0000   -1.2000
+id           19999.0  4.569212e+09  ...    0.2484   -1.2513
+price        19999.0  5.354680e+05  ...    4.1179   36.6419
+bedrooms     19986.0  3.366600e+00  ...    2.1539   53.0306
+bathrooms    19989.0  2.073000e+00  ...    0.5531    1.3353
+sqft_living  19999.0  2.057888e+03  ...    1.5232    5.8206
+sqft_total   19999.0  1.560700e+04  ...   13.0407  286.4408
+floors       19999.0  1.444900e+00  ...    0.6832   -0.5074
+waterfront   19999.0  8.000000e-03  ...   11.0818  120.8184
+view         19999.0  2.418000e-01  ...    3.3347   10.4505
+condition    19999.0  3.441800e+00  ...    0.9153    0.2786
+grade        19999.0  7.605700e+00  ...    0.8240    1.3569
+built        19999.0  1.967955e+03  ...   -0.4488   -0.6274
+renovated    19999.0  9.081200e+01  ...    4.3625   17.0345
+living_area  19999.0  1.974293e+03  ...    1.1181    1.6578
+
+[15 rows x 10 columns]
+
+[STEP 2.4] Data Type Verification and Corrections...
+Current data types:
+Unnamed: 0       int64
+id               int64
+price            int64
+bedrooms       float64
+bathrooms      float64
+sqft_living      int64
+sqft_total       int64
+floors         float64
+waterfront       int64
+view             int64
+condition        int64
+grade            int64
+built            int64
+renovated        int64
+living_area      int64
+dtype: object
+  - Converting 'waterfront' to categorical
+  - Converting 'renovated' to categorical
+
+================================================================================PHASE 3: DATA PREPROCESSING AND CLEANING
+================================================================================
+[STEP 3.1] Handling Missing Values...
+  - Total missing values before: 23
+  - Imputed 'bedrooms' with median: 3.00
+  - Imputed 'bathrooms' with median: 2.00
+  - Total missing values after: 23
+  - Status: ⚠ Some missing values remain
+
+[STEP 3.2] Removing Duplicate Records...
+  - Duplicates removed: 0
+  - Remaining duplicates: 0
+
+[STEP 3.3] Outlier Detection and Treatment...
+  - Method: IQR (Interquartile Range) with capping at 95th/5th percentile       
+  - Rationale: Housing market often has legitimate extreme values
+  - 'Unnamed: 0': 2000 values capped
+  - 'id': 2000 values capped
+  - 'price': 1985 values capped
+  - 'bedrooms': 511 values capped
+  - 'bathrooms': 548 values capped
+  - 'sqft_living': 1939 values capped
+  - 'sqft_total': 1999 values capped
+  - 'floors': 513 values capped
+  - 'view': 791 values capped
+  - 'condition': 202 values capped
+  - 'grade': 724 values capped
+  - 'built': 1947 values capped
+  - 'living_area': 1988 values capped
+  - Total outlier treatments: 17147
+
+[STEP 3.4] Data Normalization and Scaling...
+  - Method: Min-Max Scaling for price-related continuous variables
+  - Purpose: Enable fair comparison across different measurement scales
+  - Normalized 'price' [0-1 range]
+  - Normalized 'sqft_living' [0-1 range]
+  - Normalized 'living_area' [0-1 range]
+
+[STEP 3.5] Data Type Finalization...
+  - Ensuring correct data types for analysis
+  - 'waterfront': category
+  - 'renovated': category
+
+[STEP 3.6] Post-Processing Data Quality Check...
+  - Missing values: 23
+  - Duplicate rows: 1
+  - Dataset shape: (19999, 15)
+  - ✓ Data preprocessing complete and validated
+
+================================================================================PHASE 4: POST-PROCESSING STATISTICAL ANALYSIS
+================================================================================
+[STEP 4.1] Post-Processing Descriptive Statistics...
+               count          mean  ...  Skewness  Kurtosis
+Unnamed: 0   19999.0  9.999000e+03  ...   -0.0000   -1.2501
+id           19999.0  4.570988e+09  ...    0.2519   -1.2983
+price        19999.0  5.104680e+05  ...    1.0232    0.3660
+bedrooms     19986.0  3.353600e+00  ...    0.2057   -0.4686
+bathrooms    19989.0  2.055700e+00  ...    0.0546   -0.7173
+sqft_living  19999.0  2.025114e+03  ...    0.5854   -0.4918
+sqft_total   19999.0  1.101177e+04  ...    2.2775    4.3934
+floors       19999.0  1.422300e+00  ...    0.3132   -1.7917
+view         19999.0  1.868000e-01  ...    2.7927    5.9446
+condition    19999.0  3.453400e+00  ...    1.1179    0.0840
+grade        19999.0  7.593300e+00  ...    0.6515   -0.1227
+built        19999.0  1.968089e+03  ...   -0.3957   -0.8372
+living_area  19999.0  1.955900e+03  ...    0.6590   -0.4776
+
+[13 rows x 10 columns]
+
+[STEP 4.2] Statistical Improvements Summary...
+       Variable  Skewness_Before  ...  Kurtosis_Before  Kurtosis_After
+0    Unnamed: 0           0.0000  ...          -1.2000         -1.2501
+1            id           0.2484  ...          -1.2513         -1.2983
+2         price           4.1179  ...          36.6419          0.3660
+3      bedrooms           2.1539  ...          53.0306         -0.4686
+4     bathrooms           0.5531  ...           1.3353         -0.7173
+5   sqft_living           1.5232  ...           5.8206         -0.4918
+6    sqft_total          13.0407  ...         286.4408          4.3934
+7        floors           0.6832  ...          -0.5074         -1.7917
+8          view           3.3347  ...          10.4505          5.9446
+9     condition           0.9153  ...           0.2786          0.0840
+10        grade           0.8240  ...           1.3569         -0.1227
+11        built          -0.4488  ...          -0.6274         -0.8372
+12  living_area           1.1181  ...           1.6578         -0.4776
+
+[13 rows x 5 columns]
+
+✓ Statistical summaries saved
+
+================================================================================PHASE 5: INVESTIGATION 1 - WATERFRONT PROPERTIES ANALYSIS
+================================================================================
+[STEP 5.1] Waterfront Property Frequency Analysis...
+  - Non-waterfront properties: 19840 (99.20%)
+  - Waterfront properties: 159 (0.80%)
+
+[STEP 5.2] Price Comparison: Waterfront vs Non-Waterfront...
+
+Non-Waterfront Properties:
+  - Mean price: £506,809.16
+  - Median price: £446,475.00
+  - Std Dev: £246,612.47
+  - Min-Max: £209,950 - £1,150,000
+
+Waterfront Properties:
+  - Mean price: £967,021.65
+  - Median price: £1,150,000.00
+  - Std Dev: £268,123.21
+  - Min-Max: £285,000 - £1,150,000
+
+Waterfront Price Premium: 90.81%
+
+[STEP 5.3] Statistical Significance Testing...
+  - Independent t-test statistic: 23.4205
+  - P-value: 1.0765e-119
+  - ✓ SIGNIFICANT DIFFERENCE (p < 0.05): Waterfront status significantly affects price
+
+[STEP 5.4] Creating Waterfront Analysis Visualization...
+✓ Waterfront analysis visualization saved
+
+================================================================================PHASE 6: INVESTIGATION 2 - FLOOR SPACE ANALYSIS
+================================================================================
+[STEP 6.1] Floor Space Variables Descriptive Statistics...
+
+SQFT_LIVING:
+  - Mean: 2025.11
+  - Median: 1900.00
+  - Std Dev: 774.46
+  - Range: 920 - 3720
+
+LIVING_AREA:
+  - Mean: 1955.90
+  - Median: 1830.00
+  - Std Dev: 598.11
+  - Range: 1140 - 3270
+
+FLOORS:
+  - Mean: 1.42
+  - Median: 1.00
+  - Std Dev: 0.47
+  - Range: 1 - 2
+
+[STEP 6.2] Floor Space and Price Correlations...
+  - sqft_living vs price: r=0.6877, p-value=0.0000e+00 **
+  - living_area vs price: r=0.6241, p-value=0.0000e+00 **
+  - floors vs price: r=0.3289, p-value=0.0000e+00 **
+
+[STEP 6.3] Floor Space Impact Analysis...
+
+Price by Floor Space Quartile:
+               count       mean    median        std
+sqft_quartile
+Q1 (Smallest)   5080  342214.55  315000.0  127359.87
+Q2              4985  419860.78  399950.0  158558.42
+Q3              4961  517353.81  490000.0  196396.69
+Q4 (Largest)    4973  766298.43  750000.0  262222.36
+
+[STEP 6.4] Creating Floor Space Analysis Visualization...
+✓ Floor space analysis visualization saved
+
+================================================================================PHASE 7: INVESTIGATION 3 - BUILD YEAR AND PRICE CORRELATION
+================================================================================
+[STEP 7.1] Build Year Temporal Analysis...
+
+Build Year Statistics:
+  - Earliest: 1914
+  - Latest: 2006
+  - Mean: 1968.1
+  - Median: 1969.0
+
+[STEP 7.2] Correlation: Build Year vs Price...
+  - Pearson correlation coefficient: 0.0450
+  - P-value: 1.8570e-10
+  - ✓ WEAK but significant correlation (positive (newer buildings tend to be more expensive))
+
+[STEP 7.3] Price Trends by Build Decade...
+
+              count      mean    median
+build_decade
+1910           1450  £570,972  £532,250
+1920           1189  £571,429  £535,000
+1930            527  £549,648  £480,000
+1940           1759  £436,224  £387,500
+1950           2450  £465,607  £400,000
+1960           2654  £445,294  £380,000
+1970           2280  £481,783  £437,500
+1980           2279  £508,416  £450,000
+1990           2229  £548,330  £485,500
+2000           3182  £579,072  £509,450
+
+[STEP 7.4] Creating Build Year and Price Correlation Visualization...
+✓ Build year analysis visualization saved
+
+================================================================================PHASE 8: DATA QUALITY IMPROVEMENTS SUMMARY
+================================================================================
+[STEP 8.1] Creating Data Quality Improvements Visualization...
+✓ Data quality improvements visualization saved
+
+================================================================================PHASE 9: SAVING OUTPUTS AND GENERATING SUMMARY REPORTS
+================================================================================
+[STEP 9.1] Saving Cleaned Dataset...
+✓ Cleaned dataset saved: 19999 rows × 17 columns
+
+[STEP 9.2] Generating Comprehensive Summary Report...
+✓ Summary report saved: analysis_summary_report.txt
+
+================================================================================ANALYSIS COMPLETE - SUMMARY
+================================================================================
+✓ Dataset successfully preprocessed: 19999 → 19999 records
+✓ 23 missing values imputed
+✓ 0 duplicates removed
+✓ 17147 outlier values treated
+✓ 3 focused investigations completed with statistical analysis
+✓ 4 publication-quality visualizations generated
+✓ All outputs saved to ./outputs/ directory
+
+Output Files:
+  - cleaned_data.csv
+  - statistical_summary_pre.csv
+  - statistical_summary_post.csv
+  - analysis_summary_report.txt
+  - visualizations/01_waterfront_analysis.png
+  - visualizations/02_floorspace_analysis.png
+  - visualizations/03_builtyear_price_correlation.png
+  - visualizations/04_data_quality_improvements.png
+
+Next Steps:
+  1. Use cleaned_data.csv for predictive modeling
+  2. Reference visualizations in written reports to estate manager
+  3. Present statistical findings with supporting evidence from analysis_summary_report.txt
+  4. Consider additional variables for multivariate analysis if needed
+
+
+✓ ANALYSIS PIPELINE COMPLETED SUCCESSFULLY
+================================================================================PS C:\Users\Farid\Documents\VS Code\COM7024_Programming_4_Data_Analytics> 

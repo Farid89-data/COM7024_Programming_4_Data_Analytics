@@ -29,7 +29,7 @@ os.makedirs('outputs/visualizations', exist_ok=True)
 
 # Load dataset
 print("\n[STEP 1.1] Loading Manchester Housing Dataset...")
-df = pd.read_csv('Manchester_house_Dataset-3678.csv')
+df = pd.read_csv('datasets/Manchester_house_Dataset-3678.csv')
 
 print(f"✓ Dataset loaded successfully")
 print(f"  - Dimensions: {df.shape[0]} rows × {df.shape[1]} columns")
