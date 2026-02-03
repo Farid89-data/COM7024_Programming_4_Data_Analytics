@@ -1,4 +1,25 @@
 # Manchester Housing Data Analytics Project
+<div align="center">
+
+python 3.8+
+pandas
+NumPy
+SciPy
+matplotlib
+seaborn
+scikit‑learn
+License
+
+A comprehensive mathematical analysis portfolio for data science applications
+
+Overview •
+Installation •
+Usage •
+Topics •
+Datasets •
+License
+
+</div>
 
 ## 📊 Executive Summary
 
@@ -299,15 +320,6 @@ The corrected script accounts for this automatically.
 
 ---
 
-## ✅ Final Checklist
-
-- [ ] Code runs without errors  
-- [ ] All 11 visualisations generated  
-- [ ] Statistical claims supported by outputs  
-- [ ] Report references figures and tables  
-- [ ] Academic tone maintained throughout  
-
----
 
 ## 📖 Conclusion
 
@@ -317,6 +329,21 @@ It demonstrates not only technical competence, but also **analytical judgement**
 The repository can be used directly to support a structured 1000‑word report grounded in visual and statistical evidence.
 
 ---
+## 👨‍💻 Author
+**Farid Negahbnai**
+   * 🎓 Student ID: 24154844
+   * 🏫 Arden University
+   * 📧 Module: COM7024 Programming for Data Analytics
+   * 👨‍🏫 Tutor: Dr. Muhammad Saqib 
+
+<div align="center">
+
+© 2026 Farid Negahbnai | Arden University
+
+Made with ❤️ for COM7023 Mathematics for Data Science
 
 *Python 3.8+ | pandas | NumPy | SciPy | matplotlib | seaborn | scikit‑learn*  
 *Arden University — COM7024*
+
+</div>
+
