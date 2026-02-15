@@ -78,11 +78,17 @@ In line with the assignment brief, this project demonstrates the following:
 ## 📁 Project Structure
 
 ```
-Manchester_Housing_Analytics/
+COM7024_Programming_4_Data_Analytics/
 │
 ├── data_analytics_project_corrected.py    # Main analysis script
-├── Manchester_house_Dataset_3678_.csv     # Input dataset
+├── CODE_GUIDE.md			   # Explains the full Python
 ├── README_PROFESSIONAL.md                 # Project documentation
+├── requirements.txt
+├── LICENSE
+│
+├── datasets/
+│   ├──Manchester_house_Dataset_3678_.csv  # Input dataset
+│   └──COM7024_Programming_for_Data_Analytics_Marking_Matrix.csv
 │
 ├── outputs/
 │   ├── cleaned_data.csv                   # Final preprocessed dataset
@@ -345,10 +351,12 @@ The repository can be used directly to support a structured 1000‑word report g
 
 <div align="center">
 
-© 2026 Farid Negahbnai | Arden University
 
 *Python 3.8+ | pandas | NumPy | SciPy | matplotlib | seaborn | scikit‑learn*  
 
 Made with ❤️ for COM7024 Programming for Data Analytics
+
+© 2026 Farid Negahbnai | Arden University
+
 </div>
 
