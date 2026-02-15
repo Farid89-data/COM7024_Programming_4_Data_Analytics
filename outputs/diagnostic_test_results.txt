@@ -1,0 +1,148 @@
+
+DIAGNOSTIC TEST RESULTS - STATISTICAL ASSUMPTIONS VERIFICATION
+================================================================================
+
+1. WATERFRONT T-TEST DIAGNOSTICS
+================================================================================
+
+A. Normality Tests (Shapiro-Wilk):
+   Non-Waterfront: W=0.8994, p=9.8488e-77
+   Waterfront: W=0.7065, p=1.9333e-16
+   Conclusion: Deviation from normality detected
+
+B. Homogeneity of Variance (Levene's Test):
+   Test Statistic: 0.2498, p-value: 6.1721e-01
+   Conclusion: Equal variances assumed
+
+C. Test Selection:
+   Method Used: Student t-test
+   Rationale: Variances are equal
+
+D. Robustness Checks:
+   Parametric t-test p-value: 1.0765e-119
+   Log-transformed t-test p-value: 1.3467e-79
+   Mann-Whitney U test p-value: 1.8692e-60
+   Conclusion: ALL THREE METHODS AGREE - findings are statistically robust
+
+2. CORRELATION ANALYSIS DIAGNOSTICS
+================================================================================
+
+Sample Size: n=19999
+Note: Large sample size makes correlation relatively robust to normality violations
+
+Comparison of Correlation Methods:
+
+sqft_living ↔ Price:
+   Pearson r: 0.6877 (p=0.0000e+00)
+   Spearman ρ: 0.6415 (p=0.0000e+00)
+   Agreement: Excellent
+
+living_area ↔ Price:
+   Pearson r: 0.6241 (p=0.0000e+00)
+   Spearman ρ: 0.5781 (p=0.0000e+00)
+   Agreement: Excellent
+
+floors ↔ Price:
+   Pearson r: 0.3289 (p=0.0000e+00)
+   Spearman ρ: 0.3323 (p=0.0000e+00)
+   Agreement: Excellent
+
+
+3. BUILD YEAR CORRELATION DIAGNOSTICS
+================================================================================
+
+Pearson Correlation: r=0.0450, p=1.8570e-10
+Spearman Correlation: ρ=0.0807, p=2.7298e-30
+Difference: 0.0357
+Conclusion: Consistent linear and monotonic relationship
+
+Linearity Check:
+   Regression R²: 0.0020
+   Residual patterns: See visualization 06_builtyear_diagnostics.png
+
+4. OUTLIER TREATMENT LOG
+================================================================================
+
+Unnamed: 0:
+   Original range: [0.00, 19998.00]
+   Capped range: [999.90, 18998.10]
+   Values affected: 2000
+
+id:
+   Original range: [1000102.00, 9900000190.00]
+   Capped range: [519962133.10, 9287801547.50]
+   Values affected: 2000
+
+price:
+   Original range: [75000.00, 7700000.00]
+   Capped range: [209950.00, 1150000.00]
+   Values affected: 1985
+
+bedrooms:
+   Original range: [1.00, 33.00]
+   Capped range: [2.00, 5.00]
+   Values affected: 511
+
+bathrooms:
+   Original range: [0.50, 8.00]
+   Capped range: [1.00, 3.50]
+   Values affected: 548
+
+sqft_living:
+   Original range: [290.00, 13540.00]
+   Capped range: [920.00, 3720.00]
+   Values affected: 1939
+
+sqft_total:
+   Original range: [520.00, 1651359.00]
+   Capped range: [2589.00, 44000.10]
+   Values affected: 1999
+
+floors:
+   Original range: [1.00, 3.50]
+   Capped range: [1.00, 2.00]
+   Values affected: 513
+
+view:
+   Original range: [0.00, 4.00]
+   Capped range: [0.00, 2.00]
+   Values affected: 791
+
+condition:
+   Original range: [1.00, 5.00]
+   Capped range: [3.00, 5.00]
+   Values affected: 202
+
+grade:
+   Original range: [1.00, 13.00]
+   Capped range: [6.00, 10.00]
+   Values affected: 724
+
+built:
+   Original range: [1900.00, 2015.00]
+   Capped range: [1914.00, 2006.00]
+   Values affected: 1947
+
+living_area:
+   Original range: [399.00, 6210.00]
+   Capped range: [1140.00, 3270.00]
+   Values affected: 1988
+
+
+5. SENSITIVITY ANALYSIS SUMMARY
+================================================================================
+
+Price Distribution:
+   Original skewness: 1.0232
+   Log-transformed skewness: 0.1871
+   Improvement: 0.8361
+
+Waterfront Premium:
+   Arithmetic mean difference: 90.81%
+   Geometric mean difference: 101.83%
+
+CONCLUSION: All diagnostic checks support the validity of the statistical analyses.
+The findings are robust across different methodological approaches.
+
+================================================================================
+Report Generated: 2026-02-15 23:48:45

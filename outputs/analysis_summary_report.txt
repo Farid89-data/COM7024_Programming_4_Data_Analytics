@@ -13,7 +13,6 @@ PREPROCESSING ACTIONS TAKEN
 ✓ Missing Values Handled: 23 values imputed using median
 ✓ Duplicates Removed: 0 duplicate records deleted
 ✓ Outliers Treated: 17147 values capped using 95th/5th percentile method
-✓ Data Normalized: Price-related variables scaled to [0-1] range
 ✓ Data Types Corrected: Categorical variables properly encoded
 
 FOCUSED INVESTIGATION 1: WATERFRONT PROPERTIES
@@ -77,6 +76,8 @@ VISUALIZATIONS GENERATED
 2. 02_floorspace_analysis.png - Floor space impact on housing prices
 3. 03_builtyear_price_correlation.png - Build year and price relationships
 4. 04_data_quality_improvements.png - Pre/post preprocessing distributions
+5. 05_diagnostic_assumptions.png - Q-Q plots and normality diagnostics
+6. 06_builtyear_diagnostics.png - Linearity and residual diagnostics
 
 DATASETS SAVED
 ================================================================================
@@ -99,6 +100,6 @@ RECOMMENDATIONS FOR ESTATE MANAGER
    data quality issues, ensuring reliable analysis for forecasting models.
 
 ================================================================================
-Report Generated: 2026-02-03 14:47:17
+Report Generated: 2026-02-15 23:48:45
 Analysis Framework: Exploratory Data Analysis with Python (pandas, numpy, scipy, scikit-learn)
 Methodology: Following Arden University COM7024 Academic Standards
