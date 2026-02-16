@@ -32,7 +32,7 @@ The aim is not only to produce results, but to demonstrate **sound analytical re
 | **Assignment Title** | Programming for Data Analytics |
 | **Student Number** | 24154844 |
 | **Student Name** | Farid Negahbani |
-| **Tutor** | Dr. Muhammad Saqib |
+| **Tutor** | Mohammad Amin Mohammadi Banadaki |
 | **University** | Arden University |
 
 ---
