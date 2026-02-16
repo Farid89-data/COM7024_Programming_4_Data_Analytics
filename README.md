@@ -31,7 +31,7 @@ The aim is not only to produce results, but to demonstrate **sound analytical re
 | **Module Code** | COM7024 |
 | **Assignment Title** | Programming for Data Analytics |
 | **Student Number** | 24154844 |
-| **Student Name** | Farid Negahbnai |
+| **Student Name** | Farid Negahbani |
 | **Tutor** | Dr. Muhammad Saqib |
 | **University** | Arden University |
 
@@ -356,7 +356,7 @@ The repository can be used directly to support a structured 1000‑word report g
 
 Made with ❤️ for COM7024 Programming for Data Analytics
 
-© 2026 Farid Negahbnai | Arden University
+© 2026 Farid Negahbani | Arden University
 
 </div>
 
