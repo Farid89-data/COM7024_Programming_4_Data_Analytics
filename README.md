@@ -343,7 +343,7 @@ The repository can be used directly to support a structured 1000‑word report g
 
 ---
 ## 👨‍💻 Author
-**Farid Negahbnai**
+**Farid Negahbani**
    * 🎓 Student ID: 24154844
    * 🏫 Arden University
    * 📧 Module: COM7024 Programming for Data Analytics
