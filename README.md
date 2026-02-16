@@ -336,12 +336,15 @@ The corrected script accounts for this automatically.
 
 ## 📖 Conclusion
 
+<img width="4170" height="2955" alt="09_diagnostic_tests_summary" src="https://github.com/user-attachments/assets/b1ac15f0-e456-4300-a4f8-2a9ffec0ce74" />
+
 This project represents a **complete, well‑validated data analytics pipeline**, suitable for distinction‑level assessment.  
 It demonstrates not only technical competence, but also **analytical judgement**, **methodological awareness**, and **clear academic communication**.
 
 The repository can be used directly to support a structured 1000‑word report grounded in visual and statistical evidence.
 
----
+---<img width="3749" height="2670" alt="08_research_questions_dashboard" src="https://github.com/user-attachments/assets/a0125d6f-eecc-4c25-978d-a56a24238260" />
+
 ## 👨‍💻 Author
 **Farid Negahbani**
    * 🎓 Student ID: 24154844
