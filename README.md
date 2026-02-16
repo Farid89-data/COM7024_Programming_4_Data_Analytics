@@ -347,7 +347,7 @@ The repository can be used directly to support a structured 1000‑word report g
    * 🎓 Student ID: 24154844
    * 🏫 Arden University
    * 📧 Module: COM7024 Programming for Data Analytics
-   * 👨‍🏫 Tutor: Dr. Muhammad Saqib 
+   * 👨‍🏫 Tutor: Mohammad Amin Mohammadi Banadaki 
 
 <div align="center">
 
