@@ -227,7 +227,7 @@ Living area is a strong predictor of price, explaining a substantial proportion 
 ---
 
 ### Investigation 3: Build Year and Price
-
+ 
 **Question**  
 Is there a relationship between construction year and property value?
 
