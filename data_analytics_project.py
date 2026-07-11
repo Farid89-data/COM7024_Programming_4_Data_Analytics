@@ -18,7 +18,7 @@ import os
 warnings.filterwarnings('ignore')
 
 # ============================================================================
-# SECTION 1: DATA IMPORT AND INITIAL EXPLORATION
+# SECTION 1: DATA IMPORT 
 # ============================================================================
 print("="*80)
 print("PHASE 1: DATA IMPORT AND INITIAL ANALYSIS")
