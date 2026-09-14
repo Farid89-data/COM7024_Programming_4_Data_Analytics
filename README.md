@@ -5,6 +5,7 @@
 Python 3.8+ | pandas | NumPy | SciPy | matplotlib | seaborn | scikit‑learn | License
 
 A comprehensive mathematical analysis portfolio for data science applications
+...
 
 Overview •
 Installation •
